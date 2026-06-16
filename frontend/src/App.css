@@ -1,0 +1,251 @@
+:root {
+  --text: #313131;
+  --text-muted: #606060;
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --border: #e3e8f1;
+  --accent: #4338ca;
+  --accent-soft: rgba(67, 56, 202, 0.1);
+  --success: #147c4d;
+  --danger: #b91c1c;
+  --shadow: 0 18px 55px rgba(0, 0, 0, 0.08);
+  --radius: 24px;
+  --font: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+}
+
+.hero-panel {
+  background: linear-gradient(135deg, #eef2ff 0%, #ffffff 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  color: var(--accent);
+  letter-spacing: 0.18em;
+  font-size: 0.8rem;
+  margin-bottom: 12px;
+}
+
+.hero-panel h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 3.6vw, 4rem);
+  line-height: 1.02;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  max-width: 640px;
+  margin: 20px 0 0;
+}
+
+.analyze-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.analyze-form input {
+  width: 100%;
+  min-height: 54px;
+  padding: 0 18px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  font-size: 1rem;
+  background: #fff;
+}
+
+.analyze-form button {
+  min-width: 140px;
+  border: none;
+  border-radius: 14px;
+  padding: 0 24px;
+  background: var(--accent);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.analyze-form button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 50px rgba(67, 56, 202, 0.18);
+}
+
+.analyze-form button:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+
+.error-message {
+  color: var(--danger);
+  margin-top: 16px;
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.report-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 26px;
+  box-shadow: 0 20px 40px rgba(16, 24, 40, 0.06);
+}
+
+.highlight-card {
+  grid-column: span 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-label {
+  margin: 0 0 12px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.score-value {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  margin: 0;
+  letter-spacing: -0.05em;
+}
+
+.summary-text {
+  color: var(--text-muted);
+  margin: 16px 0 0;
+}
+
+.report-card p,
+.report-card li {
+  color: var(--text);
+  margin: 10px 0;
+}
+
+.report-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+
+.report-card li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 960px) {
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .highlight-card {
+    grid-column: span 1;
+  }
+}
+
+.export-btn {
+  margin-top: 12px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--accent);
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.export-btn:hover {
+  opacity: 0.9;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 24px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.modal-content h3 {
+  margin: 0 0 16px;
+  color: var(--text);
+}
+
+.modal-list {
+  margin-bottom: 16px;
+}
+
+.modal-item {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-item:last-child {
+  border-bottom: none;
+}
+
+.broken-icon {
+  color: var(--danger);
+}
+
+.modal-url {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  word-break: break-all;
+}
+
+.modal-close {
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: var(--accent-soft);
+}
